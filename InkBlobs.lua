@@ -1,6 +1,5 @@
 -- InkBlobs
 
---[==[
 local Brush = cimport "Brush"
 local InkBlobs = class(Brush)
 
@@ -17,5 +16,6 @@ function InkBlobs:stroke(x,id,t)
     self:basicStroke(x,id,t)
 end
 
-return InkBlobs
---]==]
+if _M then
+    return InkBlobs
+end

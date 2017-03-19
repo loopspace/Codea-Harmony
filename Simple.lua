@@ -1,6 +1,5 @@
 -- Simple
 
---[==[
 local Brush = cimport "Brush"
 local Simple = class(Brush)
 
@@ -12,5 +11,6 @@ function Simple:stroke(x,id,t)
     self:basicStroke(x,id,t)
 end
 
-return Simple
---]==]
+if _M then
+    return Simple
+end

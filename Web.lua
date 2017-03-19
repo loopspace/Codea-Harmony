@@ -1,6 +1,5 @@
 -- Web
 
---[==[
 local BrushEx = cimport "BrushEx"
 local Colour = cimport "Colour"
 local Web = class(BrushEx)
@@ -31,5 +30,7 @@ function Web:stroke(x,id,t)
     end
 end
 
-return Web
---]==]
+if _M then
+    return Web
+end
+

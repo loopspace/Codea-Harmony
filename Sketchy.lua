@@ -1,6 +1,5 @@
 -- Sketchy
 
---[==[
 local BrushEx = cimport "BrushEx"
 local Colour = cimport "Colour"
 local Sketchy = class(BrushEx)
@@ -31,6 +30,6 @@ function Sketchy:stroke(x,id,t)
     end
 end
 
-return Sketchy
-
---]==]
+if _M then
+    return Sketchy
+end

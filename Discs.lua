@@ -1,6 +1,5 @@
 -- Circles
 
---[==[
 local Brush = cimport "Brush"
 local Circles = class(Brush)
 
@@ -20,5 +19,6 @@ function Circles:stroke(x,id,t)
 
 end
 
-return Circles
---]==]
+if _M then
+    return Circles
+end

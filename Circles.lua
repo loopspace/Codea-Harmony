@@ -1,6 +1,5 @@
 -- Discs
 
---[==[
 local Brush = cimport "Brush"
 local Discs = class(Brush)
 
@@ -26,6 +25,7 @@ function Discs:stroke(x,id,t)
             })
     end
 end
-return Discs
 
---]==]
+if _M then
+    return Discs
+end

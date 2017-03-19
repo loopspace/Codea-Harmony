@@ -1,6 +1,5 @@
 -- Squares
 
---[==[
 local Brush = cimport "Brush"
 local Squares = class(Brush)
 
@@ -32,6 +31,6 @@ function Squares:stroke(x,id,t)
     self.lines[id].finish = x
 end
 
-return Squares
-
---]==]
+if _M then
+    return Squares
+end

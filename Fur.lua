@@ -1,5 +1,5 @@
 -- Fur
---[==[
+
 local BrushEx = cimport "BrushEx"
 local Colour = cimport "Colour"
 local Fur = class(BrushEx)
@@ -28,5 +28,7 @@ function Fur:stroke(x,id,t)
         end
     end
 end
-return Fur
---]==]
+
+if _M then
+    return Fur
+end

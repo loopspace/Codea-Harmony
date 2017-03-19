@@ -1,4 +1,4 @@
---[==[
+
 
 local Drawable = cimport "Drawable"
 local TextNode = cimport "TextNode"
@@ -80,5 +80,6 @@ function TextBlock:updateStyle()
     end
 end
 
-return TextBlock
---]==]
+if _M then
+    return TextBlock
+end

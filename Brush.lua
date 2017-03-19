@@ -1,5 +1,4 @@
 -- Brush
---[==[
 
 local Drawable = cimport "Drawable"
 local Colour = cimport "Colour"
@@ -737,6 +736,7 @@ function Brush:addCap(t)
     return t
 end
 
-return Brush
+if _M then
+    return Brush
+end
 
---]==]

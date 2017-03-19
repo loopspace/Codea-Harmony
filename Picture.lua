@@ -1,4 +1,4 @@
---[==[
+
 local Drawable = cimport "Drawable"
 cimport "PictureBrowser"
 local Colour = cimport "Colour"
@@ -207,6 +207,6 @@ void main()
 ]]
 end
 
-return Picture
-
---]==]
+if _M then
+    return Picture
+end

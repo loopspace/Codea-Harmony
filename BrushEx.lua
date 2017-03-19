@@ -1,5 +1,5 @@
 -- BrushEx
---[==[
+
 local Brush = cimport "Brush"
 cimport "Coordinates"
 BrushEx = class(Brush)
@@ -52,6 +52,6 @@ function BrushEx:predraw()
     end
 end
 
-return BrushEx
-
---]==]
+if _M then
+    return BrushEx
+end

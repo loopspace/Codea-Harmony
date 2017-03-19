@@ -1,6 +1,4 @@
 -- Canvas
---[==[
-
 
 local JOINNONE = 0
 local JOINMOVE = 1
@@ -434,6 +432,7 @@ function Canvas:init(t)
         end,
     })
     end
+    
     stm:addItem({
        title = "Background",
         action = function(x,y)
@@ -1001,7 +1000,7 @@ function Canvas:setStyle(t)
     self:setLineAlpha()
 end
 
-cmodule.gexport {
+local exports = {
     JOINNONE = JOINNONE,
     JOINMOVE = JOINMOVE,
     JOINLINE = JOINLINE,
@@ -1012,6 +1011,12 @@ cmodule.gexport {
     BLENDS = BLENDS
 }
 
-return Canvas
---]==]
+if _M then
+    cmodule.gexport(exports)
+    return Canvas
+else
+    for k,v in ipairs(exports) do
+        _G[k] = v
+    end
+end
 

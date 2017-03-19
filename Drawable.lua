@@ -1,4 +1,3 @@
---[==[
 
 local Drawable = class()
 
@@ -55,6 +54,6 @@ end
 function Drawable:updateStyle()
 end
 
-return Drawable
-
---]==]
+if _M then
+    return Drawable
+end

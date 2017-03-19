@@ -16,15 +16,14 @@ supportedOrientations(ANY)
 displayMode(FULLSCREEN_NO_BUTTONS)
 
 VERSION = 2.1
-
+cmodule "Harmony CModule"
+cmodule.path("Base", "UI", "Utilities", "Graphics", "Maths")
 function setup()
     if AutoGist then
         autogist = AutoGist("Harmony CModule","A drawing application with lots of brush styles.",VERSION)
         autogist:backup(true)
     end
     
-    cmodule "Harmony CModule"
-    cmodule.path("Library Base", "Library UI", "Library Utilities", "Library Graphics", "Library Maths")
     local Touches = cimport "Touch"
     local UI = cimport "UI"
     local Debug = cimport "Debug"

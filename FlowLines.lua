@@ -1,5 +1,5 @@
 -- FlowLines, version 1
---[==[
+
 local Brush = cimport "Brush"
 cimport "NumberSpinner"
 local Colour = cimport "Colour"
@@ -108,5 +108,7 @@ function FlowLines:stroke(x,id,t)
     self.lastpts[id] = x
 end
 
-return FlowLines
---]==]
+if _M then
+    return FlowLines
+end
+

@@ -1,5 +1,5 @@
 -- Chrome
---[==[
+
 local BrushEx = cimport "BrushEx"
 local Colour = cimport "Colour"
 local Chrome = class(BrushEx)
@@ -31,5 +31,6 @@ function Chrome:stroke(x,id,t)
     end
 end
 
-return Chrome
---]==]
+if _M then
+    return Chrome
+end

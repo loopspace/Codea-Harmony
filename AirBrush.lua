@@ -1,6 +1,5 @@
 -- AirBrush
 
---[==[
 local Brush = cimport "Brush"
 local AirBrush = class(Brush)
 
@@ -25,5 +24,6 @@ function AirBrush:strokeEnd(v,id)
     self.lines[id] = nil
 end
 
-return AirBrush
---]==]
+if _M then
+    return AirBrush
+end

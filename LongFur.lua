@@ -1,5 +1,5 @@
 -- LongFur
---[==[
+
 local BrushEx = cimport "BrushEx"
 local Colour = cimport "Colour"
 local LongFur = class(BrushEx)
@@ -29,5 +29,7 @@ function LongFur:stroke(x,id,t)
         end
     end
 end
-return LongFur
---]==]
+
+if _M then
+    return LongFur
+end

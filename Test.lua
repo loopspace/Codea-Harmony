@@ -1,10 +1,7 @@
 -- Test
---[[
---[==[
+
 local Brush = cimport "Brush"
 local Test = class(Brush)
-
-table.insert(Brushes,Test)
 
 function Test:init(tb)
     Brush.init(self,"Test",tb)
@@ -97,7 +94,6 @@ function Brush:strokeEnd(x,id)
     self.isfinished = false
 end
 
-return Test
---]==]
-
---]]
+if _M then
+    return Test
+end

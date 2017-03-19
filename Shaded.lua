@@ -1,6 +1,5 @@
 -- Shaded
 
---[==[
 local BrushEx = cimport "BrushEx"
 local Colour = cimport "Colour"
 local Shaded = class(BrushEx)
@@ -28,5 +27,7 @@ function Shaded:stroke(x,id,t)
     end
 end
 
-return Shaded
---]==]
+if _M then
+    return Shaded
+end
+
