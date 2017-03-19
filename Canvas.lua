@@ -18,6 +18,11 @@ local BLENDS = {
     {"Replace",{ONE,ZERO,ONE,ZERO}}
 }
 
+local SHADERS = {
+    {"Normal", "Project:Normal"},
+    {"Cyclic", "Project:Cyclic Rendering"}
+}
+
 local Canvas = class()
 local Colour = cimport "Colour"
 cimport "ColourNames"
@@ -154,6 +159,11 @@ function Canvas:init(t)
     self.cvsmesh:addRect(
         Portrait[3]/2,Portrait[4]/2,Portrait[3],Portrait[4])
     self.cvsmesh.texture = self.cvs
+    -- if using a shader to render
+    self.shadermesh = mesh()
+    self.shadermesh:addRect(
+        Portrait[3]/2,Portrait[4]/2,Portrait[3],Portrait[4])
+    -- self.shaderimg = image(Portrait[3],Portrait[4])
     --self.alphaim = image(5,5)
     -- menus
         local attach = true
@@ -421,18 +431,30 @@ function Canvas:init(t)
         end,
     })
     for _,v in ipairs(BLENDS) do
-    bsm:addItem({
-        title = v[1],
-        action = function()
+        bsm:addItem({
+            title = v[1],
+            action = function()
                 self.style.blendmode = v[2]
-            return true
-        end,
-        highlight = function()
-            return self.style.blendmode == v[2]
-        end,
-    })
+                return true
+            end,
+            highlight = function()
+                return self.style.blendmode == v[2]
+            end,
+        })
     end
-    
+
+    for _,v in ipairs(SHADERS) do
+        bsm:addItem({
+            title = v[1] .. " Shader",
+            action = function()
+                self.style.blendmode = v[2]
+                return true
+            end,
+            highlight = function()
+                return self.style.blendmode == v[2]
+            end,
+        })
+    end
     stm:addItem({
        title = "Background",
         action = function(x,y)
@@ -954,12 +976,36 @@ function Canvas:drawcanvas()
     background(Colour.transparent)
     self.drawable:bake()
     setContext()
-    self.cvsmesh:setColors(Colour.opacity(
+
+    if type(self.style.blendmode) == "table" then
+        self.cvsmesh:setColors(Colour.opacity(
                 Colour.svg.White,self.style.alpha))
-    setContext(self.canvas)
-    blendMode(unpack(self.style.blendmode))
-    self.cvsmesh:draw()
-    setContext()
+        setContext(self.canvas)
+        blendMode(unpack(self.style.blendmode))
+        self.cvsmesh:draw()
+        setContext()
+    else
+        --[[
+        shader("Project:Normal")
+          ]]
+        self.shadermesh.shader = shader(self.style.blendmode)
+        --[[
+        setContext(self.shaderimg)
+        background(0,0,0,0)
+        self.canvasmesh:draw()
+        setContext()
+          ]]
+        self.shadermesh.shader.target = self.undoimage
+        self.shadermesh.shader.source = self.cvs
+        self.shadermesh:setColors(Colour.opacity(
+                Colour.svg.White,self.style.alpha))
+        setContext(self.canvas)
+        background(0, 0, 0, 0)
+        blendMode(ONE,ZERO,ONE,ZERO)
+        self.shadermesh:draw()
+        -- sprite(self.cvs,WIDTH/2,HEIGHT/2)
+        setContext()
+    end
     self.drawable:clear()
     self.undoable = true
     self.redoable = false
